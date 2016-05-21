@@ -1,0 +1,39 @@
+﻿@model  List<MVCPiqueSysMarket.Models.Produtos>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<hr />
+<a href="@Url.Action("Create", "Produtos")" class="btn btn-success">
+    Novo produto
+    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+<hr />
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Categoria</th>
+            <th>Preco</th>
+            <th>Ações</th>
+        </tr>
+
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Nome</td>
+                <td>@produto.Descricao</td>
+                <td>@produto.Categoria</td>
+                <td>@produto.Preco</td>
+
+                <td>@Html.ActionLink("Edit", "Edit", new { id = produto.Id }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Details", "Details", new { id = produto.Id }, new { @class = "btn btn-success" })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = produto.Id }, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
+    </table>
+</div>
